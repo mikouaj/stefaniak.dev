@@ -1,0 +1,16 @@
+# WebPack ignores
+/dist
+/node_modules
+/tmp
+.DS_Store
+*.backup
+*.log
+*.bak
+*~
+.*.swp
+.idea
+.vscode
+*.iml
+*.test
+*.iml
+
