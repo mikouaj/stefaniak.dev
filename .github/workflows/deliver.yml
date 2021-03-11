@@ -22,7 +22,7 @@ jobs:
         if: github.event_name == 'workflow_dispatch'
         run: echo "release_name=$RELEASE_NAME" >> $GITHUB_ENV
         env: 
-          RELEASE_NAME: ${{ github.event.inputs.release_name }
+          RELEASE_NAME: ${{ github.event.inputs.release_name }}
       - name: Download release
         uses: dsaltares/fetch-gh-release-asset@master
         with:
