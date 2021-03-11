@@ -2,6 +2,9 @@
 
 Mikolaj's Stefaniak [private website](https://stefaniak.dev) source code.
 
+![Terraform status](https://github.com/mikouaj/stefaniak.dev/workflows/Build/badge.svg)
+![License](https://img.shields.io/github/license/mikouaj/stefaniak.dev)
+
 ---
 
 ## Stack

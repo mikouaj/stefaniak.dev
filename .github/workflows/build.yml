@@ -27,8 +27,24 @@ jobs:
       - name: Package
         working-directory: ./dist
         run: tar cf - * | bzip2 -9 > dist.tar.bz2
-      - name: Upload package
+      - name: Upload dist package
         uses: actions/upload-artifact@v2
         with:
-          name: dist-archive
+          name: dist
           path: dist/dist.tar.bz2
+  release:
+    name: Release
+    if: startsWith(github.ref, 'refs/tags/')
+    needs: Build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download dist package
+        uses: actions/download-artifact@v2
+        with:
+          name: dist
+      - name: Release
+        uses: softprops/action-gh-release@v1
+        with:
+          files: dist.tar.bz2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
