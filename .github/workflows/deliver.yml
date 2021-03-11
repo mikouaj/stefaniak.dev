@@ -15,16 +15,18 @@ jobs:
     steps:
       - name: Check release name (from release event)
         if: github.event_name == 'release'
+        run: echo "release_name=$RELEASE_NAME" >> $GITHUB_ENV
         env: 
           RELEASE_NAME: ${{ github.event.release.name }}
       - name: Check release name (from dispatch event)
         if: github.event_name == 'workflow_dispatch'
+        run: echo "release_name=$RELEASE_NAME" >> $GITHUB_ENV
         env: 
           RELEASE_NAME: ${{ github.event.inputs.release_name }
       - name: Download release
         uses: dsaltares/fetch-gh-release-asset@master
         with:
-          version: ${{ env.RELEASE_NAME }}
+          version: ${{ env.release_name }}
           file: dist.tar.bz2
           target: ./dist.tar.bz2
       - name: List files
