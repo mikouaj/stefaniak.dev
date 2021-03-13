@@ -23,12 +23,23 @@ jobs:
         run: echo "tag_name=$TAG_NAME" >> $GITHUB_ENV
         env: 
           TAG_NAME: ${{ github.event.inputs.tag_name }}
-      - name: Download release
+      - name: Download dist package
         uses: dsaltares/fetch-gh-release-asset@master
         with:
           version: ${{ format('tags/{0}', env.tag_name) }}
           file: dist.tar.bz2
           target: ./dist.tar.bz2
-      - name: List files
-        run: ls -al
+      - name: Unpack dist package
+        run: tar jxfv dist.tar.bz2
+      - name: Upload files
+        uses: SamKirkland/FTP-Deploy-Action@4.0.0
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          port: $ {{ secrets.FTP_PORT }}
+          protocol: ftps
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          server-dir: ./test
+          exclude: dist.tar.bz2
+          dry-run: true
    
