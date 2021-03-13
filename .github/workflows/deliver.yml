@@ -39,7 +39,6 @@ jobs:
           protocol: ftps
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
-          server-dir: ./test/
+          server-dir: ./public_html/
           exclude: dist.tar.bz2
-          dry-run: true
    
