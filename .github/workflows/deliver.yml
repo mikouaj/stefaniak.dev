@@ -26,11 +26,9 @@ jobs:
       - name: Download release
         uses: dsaltares/fetch-gh-release-asset@master
         with:
-          version: ${{ env.VERSION }}
+          version: ${{ format('tags/{0}', env.tag_name) }}
           file: dist.tar.bz2
           target: ./dist.tar.bz2
-        env:
-          VERSION: format('tags/{0}', env.tag_name)
       - name: List files
         run: ls -al
    
