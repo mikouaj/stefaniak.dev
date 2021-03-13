@@ -39,6 +39,6 @@ jobs:
           protocol: ftps
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
-          server-dir: ./public_html/
+          server-dir: ./private_html/
           exclude: dist.tar.bz2
    
