@@ -68,3 +68,21 @@ body {
   font-size: 1.5em;
   margin-right: .3rem !important;
 }
+
+@include media-breakpoint-only(lg) {
+  .jumbotron-img {
+    width: 70%;
+  }
+}
+
+@include media-breakpoint-up(xl) {
+  .jumbotron-img {
+    width: 60%;
+  }
+}
+
+.exp-bullet {
+  color: #14acde;
+  font-weight: bolder;
+  padding-right: .5em;
+}
