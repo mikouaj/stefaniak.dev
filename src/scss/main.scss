@@ -81,8 +81,24 @@ body {
   }
 }
 
+@include media-breakpoint-only(md) {
+  .exp-list {
+    width: 80%;
+  }
+}
+
+@include media-breakpoint-up(lg) {
+  .exp-list{
+    width: 60%;
+  }
+}
+
 .exp-bullet {
   color: #14acde;
   font-weight: bolder;
-  padding-right: .5em;
+  padding-right: .25em;
+}
+
+.what-img {
+  width: 29%;
 }
